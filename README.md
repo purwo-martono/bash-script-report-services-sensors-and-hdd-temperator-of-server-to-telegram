@@ -20,7 +20,7 @@ Create bash script to check services, get processors and HDD temperature
 ## define it
 ipAddress=$(hostname -I)
 listService=("ufw" "ssh" "apache2" "php5.6-fpm" "postgresql" "smbd")
-file="/YOUR/PATH/OF/FILE/SHOULD/BE/HERE.txt"
+file="YOUR_FILE_NAME.txt"
 
 ## get length of $service array
 len=${#listService[@]}
@@ -36,7 +36,7 @@ lines=$(for (( i=0; i<$len; i++ ));
     done
 )
 echo "========================" > "$file"
-echo "SERVER - $ipAddress" >> "$file"
+echo "YOUR_SERVER_NAME - $ipAddress" >> "$file"
 echo "------------------------" >> "$file"
 echo "Service"$'\n'"$lines" >> "$file"
 echo "========================" >> "$file"
@@ -61,4 +61,19 @@ done
 echo "HddTemp $linesss")  >> "$file"
 echo "========================" >> "$file"
 ```
+
+Script above will save result of services, sensors, and hddtemp to YOUR_FILE_NAME.txt.
+So the only thing left is to create bash script to read YOUR_FILE_NAME.txt and send the result to telegram
+
+```
+#!/bin/bash
+
+telegram-send "$(cat YOUR_FILE_NAME.txt)"
+echo "" > YOUR_FILE_NAME.txt
+```
+
+Read YOUR_FILE_NAME.txt with 'cat' and then send to telegram with telegram-send command
+After that, clear the content of YOUR_FILE_NAME
+
+
 
