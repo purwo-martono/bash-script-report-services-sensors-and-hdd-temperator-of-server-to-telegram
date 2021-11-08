@@ -14,6 +14,7 @@ $ apt-get install lm-sensors hddtemp
 ```
 
 Create bash script to check services, get processors and HDD temperature
+In this example I use gadogado.sh as its file name
 ```
 #!/bin/bash
 
@@ -64,7 +65,7 @@ echo "========================" >> "$file"
 
 Script above will save result of services, sensors, and hddtemp to YOUR_FILE_NAME.txt.
 So the only thing left is to create bash script to read YOUR_FILE_NAME.txt and send the result to telegram
-
+In this example I use gadogadoEnak.sh as its file name
 ```
 #!/bin/bash
 
