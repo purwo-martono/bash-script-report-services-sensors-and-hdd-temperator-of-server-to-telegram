@@ -3,7 +3,7 @@
 ## define it
 ipAddress=$(hostname -I)
 listService=("ufw" "ssh" "apache2" "php5.6-fpm" "postgresql" "smbd")
-file="/home/ciptana/script/gadogado.txt"
+file="YOUR_FILE_NAME.txt"
 
 ## get length of $service array
 len=${#listService[@]}
@@ -19,7 +19,7 @@ lines=$(for (( i=0; i<$len; i++ ));
     done
 )
 echo "========================" > "$file"
-echo "HRMS - $ipAddress" >> "$file"
+echo "YOUR_SERVER_NAME - $ipAddress" >> "$file"
 echo "------------------------" >> "$file"
 echo "Service"$'\n'"$lines" >> "$file"
 echo "========================" >> "$file"
